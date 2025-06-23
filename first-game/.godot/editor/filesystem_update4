@@ -1,0 +1,8 @@
+res://scenes/game.tscn
+res://scenes/platform.tscn
+res://scenes/player.tscn
+res://scenes/ice_platform.tscn
+res://scenes/flag.tscn
+res://flag.gd
+res://scripts/game_manager.gd
+res://scenes/coin.tscn

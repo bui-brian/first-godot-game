@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2utw0vvp48eg"]
+[gd_scene load_steps=21 format=3 uid="uid://2utw0vvp48eg"]
 
 [ext_resource type="Script" uid="uid://0o8amlgm1pt6" path="res://scripts/game_manager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://dmsmcyo77lbh5" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://duuoweb8cki1q" path="res://scenes/slime.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dnbj0wqekwg3i" path="res://scenes/ice_platform.tscn" id="7_0tnpc"]
 [ext_resource type="FontFile" uid="uid://cdgd1p3yxkoho" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
+[ext_resource type="FontFile" uid="uid://bwx3e7j4sd2b6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bpicfgs537c28" path="res://scenes/flag.tscn" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -178,6 +180,21 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 
+[sub_resource type="Animation" id="Animation_vtaks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(31, -658)]
+}
+
 [sub_resource type="Animation" id="Animation_0tnpc"]
 resource_name = "move_up"
 length = 5.0
@@ -193,21 +210,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(31, -658), Vector2(31, -809)]
-}
-
-[sub_resource type="Animation" id="Animation_vtaks"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(31, -658)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kvpfn"]
@@ -259,6 +261,18 @@ _data = {
 [node name="Game Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_gee14")
+
+[node name="YouWin" type="Label" parent="Game Manager"]
+visible = false
+offset_left = 206.0
+offset_top = -947.0
+offset_right = 336.0
+offset_bottom = -914.0
+theme_override_fonts/font = ExtResource("9_kvpfn")
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="ScoreLabel" type="Label" parent="Game Manager"]
 offset_left = 658.0
@@ -364,3 +378,6 @@ position = Vector2(569, 33)
 
 [node name="Slime2" parent="EnemySlimes" instance=ExtResource("6_p57ef")]
 position = Vector2(489, -399)
+
+[node name="Flag" parent="." instance=ExtResource("10_vtaks")]
+position = Vector2(275, -843)
