@@ -55,6 +55,7 @@ func _player_jump() -> void:
 
 func _player_dash(direction) -> void:
 	if Input.is_action_just_pressed("dash") and _can_air_dash and not is_on_floor():
+		animated_sprite.play("dash")
 		_can_air_dash = false
 		_is_dashing = true
 		_dash_timer = DASH_DURATION
@@ -82,4 +83,5 @@ func _player_animation(direction) -> void:
 		else:
 			animated_sprite.play("run")
 	else:
-		animated_sprite.play("jump")
+		# animated_sprite.play("jump")
+		pass
