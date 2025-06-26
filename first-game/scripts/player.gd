@@ -82,6 +82,5 @@ func _player_animation(direction) -> void:
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("run")
-	else:
-		# animated_sprite.play("jump")
-		pass
+	elif not is_on_floor() and _is_dashing == true:
+		animated_sprite.play("dash")
